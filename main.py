@@ -44,6 +44,15 @@ try:
     profileInfo = get_profile_info(browser)
     logging.info(profileInfo)
     time.sleep(2)
+
+    # TODO: Click into the followers part
+    #   TODO: Download the users in a lists and do scroll
+
+    # TODO: Click into the following part
+    #   TODO: Download the users in a lists and do scroll
+
+    # TODO: Write the lists in a TXT / PDF
+
 except NoSuchElementException:
     print("Was not able to find an element with that class name.")
 
