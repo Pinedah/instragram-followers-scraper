@@ -50,6 +50,7 @@ This repository contains a Python script that scrapes the list of followers and 
 ## DISCLAIMER 
 
 Script built with the only purpose to practice web scraping in python. Be aware.
+
 Peace.
 
 
