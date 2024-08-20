@@ -65,14 +65,17 @@ try:
     #   TODO: Download the users in a lists and do scroll
 
 
-    for _ in range(profileInfo['following'] / 20):
+    for _ in range(round(profileInfo['following'] / 20)):
+        htmlFollowingElem = browser.find_element(By.TAG_NAME, 'html')
+
 
         followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade") # 
         # logging.info(followersElem)
         for i in range(len(followingUsersElem)):
             logging.info(pprint.pformat(followingUsersElem[i].text))
 
-        htmlElem.send_keys(Keys.END)
+        htmlFollowingElem.send_keys(Keys.END)
+        time.sleep(2)
 
     # TODO: Click into the following part
     #   TODO: Download the users in a lists and do scroll
