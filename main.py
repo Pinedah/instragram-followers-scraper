@@ -91,7 +91,7 @@ try:
                     logging.info(str(followingUsersElem[i].text))
 
             time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 600;", scrollable_div)
+            browser.execute_script("arguments[0].scrollTop += 500;", scrollable_div)
             time.sleep(4)
 
 
@@ -105,7 +105,7 @@ except NoSuchElementException:
 
 print(f"Following: {len(followingList)} users")
 pprint.pprint(followingList)
-sortedList = list(followingList.sort())
+sortedList = sorted(followingList)
 print(sortedList)
 pprint.pprint(sortedList)
 
