@@ -24,9 +24,12 @@ def get_profile_info(profile):
     # info['bio'] = infoByLines[7]
     return info
 
-def get_users(profile):
+def get_users(html, profile, numberOfUsers):
     users = []
     print("Start downloading users...")
+
+    
+
 
     return users
 
@@ -59,7 +62,7 @@ try:
     time.sleep(2)
 
     #   TODO: Download the users in a lists and do scroll
-    following = get_users()
+    following = get_users(htmlElem, browser, profileInfo['following'])
 
 
     # TODO: Click into the following part
