@@ -82,7 +82,9 @@ try:
         else:
             
             # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
-            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
+            # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
+            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "span")
+
 
             for i in range(len(followingUsersElem)):
                 #logging.info(pprint.pformat(followingUsersElem[i].text))
@@ -91,7 +93,7 @@ try:
                     logging.info(str(followingUsersElem[i].text))
 
             time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 300;", scrollable_div)
+            browser.execute_script("arguments[0].scrollTop += 500;", scrollable_div)
             time.sleep(2)
 
 
