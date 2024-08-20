@@ -60,21 +60,28 @@ try:
     followingElem.click()
     time.sleep(2)
     print("Starting scrap...")
-    time.sleep(2)
+    time.sleep(4)
 
     #   TODO: Download the users in a lists and do scroll
 
 
     for _ in range(round(profileInfo['following'] / 20)):
-        htmlFollowingElem = browser.find_element(By.TAG_NAME, 'html')
+        """htmlFollowingElem = browser.find_element(By.CSS_SELECTOR, "")
+        browser.execute_script"""
 
+        #c = browser.find_element(By.CSS_SELECTOR, ".x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft")
+        scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
 
         followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade") # 
         # logging.info(followersElem)
         for i in range(len(followingUsersElem)):
             logging.info(pprint.pformat(followingUsersElem[i].text))
 
-        htmlFollowingElem.send_keys(Keys.END)
+
+        browser.execute_script("arguments[0].scrollTop += 200;", scrollable_div)
+        #c.send_keys(Keys.END)
+        #browser.execute_script("window.scrollBy(0, 500);")  # Scroll down 500 pixels
+        #htmlFollowingElem.send_keys(Keys.END)
         time.sleep(2)
 
     # TODO: Click into the following part
@@ -83,7 +90,7 @@ try:
     # TODO: Write the lists in a TXT / PDF
 
 except NoSuchElementException:
-    print("Was not able to find an element with that class name.")
+    logging.error("Was not able to find an element with that class name.")
 
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
