@@ -81,8 +81,8 @@ try:
             Flag = False  
         else:
             
-            #followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
-            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
+            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
+            # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
 
             for i in range(len(followingUsersElem)):
                 #logging.info(pprint.pformat(followingUsersElem[i].text))
@@ -91,8 +91,9 @@ try:
                     logging.info(str(followingUsersElem[i].text))
 
             time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 500;", scrollable_div)
-            time.sleep(4)
+            browser.execute_script("arguments[0].scrollTop += 100;", scrollable_div)
+            time.sleep(2)
+
 
 
     # TODO: Click into the following part
@@ -104,9 +105,9 @@ except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
 print(f"Following: {len(followingList)} users")
-pprint.pprint(followingList)
+#pprint.pprint(followingList)
 sortedList = sorted(followingList)
-print(sortedList)
+# print(sortedList)
 pprint.pprint(sortedList)
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
