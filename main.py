@@ -64,30 +64,36 @@ try:
 
     #   TODO: Download the users in a lists and do scroll
 
+    Flag = True
 
-    for _ in range(round(profileInfo['following'] / 5)):
-        """htmlFollowingElem = browser.find_element(By.CSS_SELECTOR, "")
-        browser.execute_script"""
+    scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+    
+    while Flag:
 
-        #c = browser.find_element(By.CSS_SELECTOR, ".x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft")
-        scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+        # Look if we are in the final of the div
+        at_bottom = browser.execute_script(
+            "return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight;", 
+            scrollable_div)
 
-        followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade") # 
-        # logging.info(followersElem)
+        if at_bottom:
+            print("Ya estás en el final del scroll.")
+            Flag = False  
+        else:
+            
+            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
+            followingList = []
 
-        followingList = []
-
-        for i in range(len(followingUsersElem)):
-            logging.info(pprint.pformat(followingUsersElem[i].text))
-            if followingUsersElem[i] not in followingList:
-                followingList.append(followingUsersElem[i].text)
+            for i in range(len(followingUsersElem)):
+                logging.info(pprint.pformat(followingUsersElem[i].text))
+                if followingUsersElem[i] not in followingList:
+                    followingList.append(followingUsersElem[i].text)
 
 
-        browser.execute_script("arguments[0].scrollTop += 400;", scrollable_div)
-        #c.send_keys(Keys.END)
-        #browser.execute_script("window.scrollBy(0, 500);")  # Scroll down 500 pixels
-        #htmlFollowingElem.send_keys(Keys.END)
-        time.sleep(3)
+            browser.execute_script("arguments[0].scrollTop += 400;", scrollable_div)
+            time.sleep(3)
+    
+
+    
 
 
 
