@@ -24,6 +24,9 @@ def get_profile_info(profile):
     # info['bio'] = infoByLines[7]
     return info
 
+def get_users(profile):
+    print("Start downloading users...")
+
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
 
@@ -46,6 +49,9 @@ try:
     time.sleep(2)
 
     # TODO: Click into the followers part
+    followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'following')
+    followingElem.click()
+
     #   TODO: Download the users in a lists and do scroll
 
     # TODO: Click into the following part
