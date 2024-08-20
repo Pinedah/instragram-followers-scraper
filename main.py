@@ -67,6 +67,7 @@ try:
     Flag = True
 
     scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+    followingList = []
     
     while Flag:
 
@@ -81,20 +82,16 @@ try:
         else:
             
             followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
-            followingList = []
 
             for i in range(len(followingUsersElem)):
-                logging.info(pprint.pformat(followingUsersElem[i].text))
-                if followingUsersElem[i] not in followingList:
-                    followingList.append(followingUsersElem[i].text)
+                #logging.info(pprint.pformat(followingUsersElem[i].text))
+                if followingUsersElem[i].text not in followingList:
+                    followingList.append(str(followingUsersElem[i].text))
+                    logging.info(str(followingUsersElem[i].text))
 
-
-            browser.execute_script("arguments[0].scrollTop += 400;", scrollable_div)
-            time.sleep(3)
-    
-
-    
-
+            time.sleep(1)
+            browser.execute_script("arguments[0].scrollTop += 600;", scrollable_div)
+            time.sleep(4)
 
 
     # TODO: Click into the following part
@@ -107,6 +104,9 @@ except NoSuchElementException:
 
 print(f"Following: {len(followingList)}")
 pprint.pprint(followingList)
+sortedList = followingList.sort()
+print(sortedList)
+pprint.pprint(sortedList)
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
