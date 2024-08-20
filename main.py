@@ -81,7 +81,8 @@ try:
             Flag = False  
         else:
             
-            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
+            #followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
+            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
 
             for i in range(len(followingUsersElem)):
                 #logging.info(pprint.pformat(followingUsersElem[i].text))
@@ -102,9 +103,9 @@ try:
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
-print(f"Following: {len(followingList)}")
+print(f"Following: {len(followingList)} users")
 pprint.pprint(followingList)
-sortedList = followingList.sort()
+sortedList = list(followingList.sort())
 print(sortedList)
 pprint.pprint(sortedList)
 
