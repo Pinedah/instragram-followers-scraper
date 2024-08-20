@@ -1,7 +1,7 @@
 #! python3
 # main-login.py - Simple script that download all photos from an Instagram profile (LogIn manually).
 
-import logging, time, requests, os, re
+import logging, time, requests, os, re, pprint
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -14,7 +14,7 @@ logging.disable(logging.DEBUG)
 def get_profile_info(profile):
     profileInfo = profile.find_element(By.CLASS_NAME, 'xdj266r') 
     infoByLines = str(profileInfo.text).split('\n')
-    logging.info(infoByLines)
+    # logging.info(infoByLines)
     info = {}
     info['username'] = infoByLines[0]
     info['posts'] = infoByLines[3].split(' ')[0]
@@ -25,7 +25,10 @@ def get_profile_info(profile):
     return info
 
 def get_users(profile):
+    users = []
     print("Start downloading users...")
+
+    return users
 
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
@@ -45,14 +48,19 @@ try:
     htmlElem = browser.find_element(By.TAG_NAME, 'html')
     time.sleep(4)
     profileInfo = get_profile_info(browser)
-    logging.info(profileInfo)
+    logging.info('\n', pprint.pformat(profileInfo))
     time.sleep(2)
 
     # TODO: Click into the followers part
     followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'following')
     followingElem.click()
+    time.sleep(2)
+    print("Starting scrap...")
+    time.sleep(2)
 
     #   TODO: Download the users in a lists and do scroll
+    following = get_users()
+
 
     # TODO: Click into the following part
     #   TODO: Download the users in a lists and do scroll
@@ -63,6 +71,7 @@ except NoSuchElementException:
     print("Was not able to find an element with that class name.")
 
 
-print("Thanks for scrapping with us, come again soon!!<3<3 \n\n")
+print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
+input("ENTER TO CLOSE...")
 browser.quit()
