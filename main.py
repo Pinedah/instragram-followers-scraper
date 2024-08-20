@@ -17,21 +17,22 @@ def get_profile_info(profile):
     # logging.info(infoByLines)
     info = {}
     info['username'] = infoByLines[0]
-    info['posts'] = infoByLines[3].split(' ')[0]
-    info['followers'] = infoByLines[4].split(' ')[0]
-    info['following'] = infoByLines[5].split(' ')[0]
+    info['posts'] = int(infoByLines[3].split(' ')[0])
+    info['followers'] = int(infoByLines[4].split(' ')[0])
+    info['following'] = int(infoByLines[5].split(' ')[0])
     info['name'] = infoByLines[6]
     # info['bio'] = infoByLines[7]
     return info
 
-def get_users(html, profile, numberOfUsers):
+"""def get_users(html, profile, numberOfUsers):
     users = []
     print("Start downloading users...")
 
-    
+    for _ in range(numberOfUsers / 20):
+        profile.findE
+        html.send_keys(Keys.END)
 
-
-    return users
+    return users"""
 
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
@@ -51,10 +52,10 @@ try:
     htmlElem = browser.find_element(By.TAG_NAME, 'html')
     time.sleep(4)
     profileInfo = get_profile_info(browser)
-    logging.info('\n', pprint.pformat(profileInfo))
+    logging.info(pprint.pformat(profileInfo))
     time.sleep(2)
 
-    # TODO: Click into the followers part
+    # TODO: Click into the following part
     followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'following')
     followingElem.click()
     time.sleep(2)
@@ -62,7 +63,14 @@ try:
     time.sleep(2)
 
     #   TODO: Download the users in a lists and do scroll
-    following = get_users(htmlElem, browser, profileInfo['following'])
+
+    followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade") # 
+    # logging.info(followersElem)
+    for i in range(len(followingUsersElem)):
+        logging.info(pprint.pformat(followingUsersElem[i].text))
+
+    for _ in range(profileInfo['following'] / 20):
+        htmlElem.
 
 
     # TODO: Click into the following part
