@@ -65,7 +65,7 @@ try:
     #   TODO: Download the users in a lists and do scroll
 
 
-    for _ in range(round(profileInfo['following'] / 20)):
+    for _ in range(round(profileInfo['following'] / 5)):
         """htmlFollowingElem = browser.find_element(By.CSS_SELECTOR, "")
         browser.execute_script"""
 
@@ -74,15 +74,22 @@ try:
 
         followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade") # 
         # logging.info(followersElem)
+
+        followingList = []
+
         for i in range(len(followingUsersElem)):
             logging.info(pprint.pformat(followingUsersElem[i].text))
+            if followingUsersElem[i] not in followingList:
+                followingList.append(followingUsersElem[i].text)
 
 
-        browser.execute_script("arguments[0].scrollTop += 200;", scrollable_div)
+        browser.execute_script("arguments[0].scrollTop += 400;", scrollable_div)
         #c.send_keys(Keys.END)
         #browser.execute_script("window.scrollBy(0, 500);")  # Scroll down 500 pixels
         #htmlFollowingElem.send_keys(Keys.END)
-        time.sleep(2)
+        time.sleep(3)
+
+
 
     # TODO: Click into the following part
     #   TODO: Download the users in a lists and do scroll
@@ -92,6 +99,8 @@ try:
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
+print(f"Following: {len(followingList)}")
+pprint.pprint(followingList)
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
