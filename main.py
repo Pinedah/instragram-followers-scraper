@@ -83,17 +83,21 @@ try:
     print("Starting scrap...")
     time.sleep(4)
     #   TODO: Download the users in a lists and do scroll
-    followingList = get_users(browser)
+    #followingList = get_users(browser)
     time.sleep(1)
 
     # Get back into profile
-    htmlElem.send_keys(Keys.RETURN)
+    # htmlElem.send_keys(Keys.RETURN)
+    
+    back = browser.find_element(By.CLASS_NAME, "_abm0")
+    back.click()
+    
     time.sleep(2)
 
     
     # TODO: Click into the following part
-    followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'followers')
-    followingElem.click()
+    followersElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'followers')
+    followersElem.click()
     time.sleep(2)
     print("Starting scrap...")
     time.sleep(4)
