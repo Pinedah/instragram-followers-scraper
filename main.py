@@ -54,26 +54,23 @@ try:
 
     #   TODO: Download the users in a lists and do scroll
 
-    Flag = True
-
     scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
     followingList = []
     
+    Flag = True
     while Flag:
 
         # Look if we are in the final of the div
         at_bottom = browser.execute_script(
             "return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight;", 
             scrollable_div)
-
         if at_bottom:
             print("Ya estás en el final del scroll.")
             Flag = False  
+
         else:
 
             followingUsersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
-
-
             for i in range(len(followingUsersElem)):
                 if followingUsersElem[i].text not in followingList:
                     followingList.append(str(followingUsersElem[i].text))
