@@ -83,11 +83,8 @@ try:
     print("Starting scrap...")
     time.sleep(4)
     #   TODO: Download the users in a lists and do scroll
-    #followingList = get_users(browser)
+    followingList = get_users(browser)
     time.sleep(1)
-
-    # Get back into profile
-    # htmlElem.send_keys(Keys.RETURN)
     
     back = browser.find_element(By.CLASS_NAME, "_abm0")
     back.click()
@@ -115,12 +112,8 @@ followingList = followingList[1:]
 followersList = followersList[1:]
 
 
-write_list_in_txt(followingList, 'following.txt')
-write_list_in_txt(followersList, 'followers.txt')
-
-# print(f"Following: {len(finalList)} users")
-# pprint.pprint(finalList)
-
+write_list_in_txt(sorted(followingList), 'following.txt')
+write_list_in_txt(sorted(followersList), 'followers.txt')
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 input("ENTER TO CLOSE...")
