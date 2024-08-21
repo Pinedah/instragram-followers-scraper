@@ -46,7 +46,7 @@ def get_users(browser):
                     logging.info(str(usersElem[i].text))
 
             time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 800;", scrollable_div)
+            browser.execute_script("arguments[0].scrollTop += 300;", scrollable_div)
             time.sleep(2)
     return usersList
     
