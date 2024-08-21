@@ -24,16 +24,6 @@ def get_profile_info(profile):
     # info['bio'] = infoByLines[7]
     return info
 
-"""def get_users(html, profile, numberOfUsers):
-    users = []
-    print("Start downloading users...")
-
-    for _ in range(numberOfUsers / 20):
-        profile.findE
-        html.send_keys(Keys.END)
-
-    return users"""
-
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
 
@@ -80,15 +70,11 @@ try:
             print("Ya estás en el final del scroll.")
             Flag = False  
         else:
-            
-            # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
-            # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
-            #followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "span")
+
             followingUsersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
 
 
             for i in range(len(followingUsersElem)):
-                #logging.info(pprint.pformat(followingUsersElem[i].text))
                 if followingUsersElem[i].text not in followingList:
                     followingList.append(str(followingUsersElem[i].text))
                     logging.info(str(followingUsersElem[i].text))
@@ -111,15 +97,6 @@ finalList = followingList[1:]
 
 print(f"Following: {len(finalList)} users")
 pprint.pprint(finalList)
-
-#debuggedList = followingList[followingList.index('Search') + 1:]
-
-#print(f"\n\nUsers: {len(debuggedList)}\n")
-#pprint.pprint(debuggedList)
-
-# sortedList = sorted(followingList)
-# print(sortedList)
-# pprint.pprint(sortedList)
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
