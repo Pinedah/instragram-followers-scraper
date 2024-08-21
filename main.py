@@ -1,7 +1,7 @@
 #! python3
 # main-login.py - Simple script that download all photos from an Instagram profile (LogIn manually).
 
-import logging, time, requests, os, re, pprint
+import logging, time, pprint
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -25,7 +25,6 @@ def get_profile_info(profile):
     return info
 
 def get_users(browser):
-
     scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
     usersList = []
     
@@ -76,29 +75,28 @@ try:
     logging.info(pprint.pformat(profileInfo))
     time.sleep(2)
 
-    # TODO: Click into the following part
+    # Click into the following part
     followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'following')
     followingElem.click()
     time.sleep(2)
     print("Starting scrap...")
     time.sleep(4)
-    #   TODO: Download the users in a lists and do scroll
+    # Download the users in a list
     followingList = get_users(browser)
     time.sleep(1)
     
+    # Go back into the main profile page
     back = browser.find_element(By.CLASS_NAME, "_abm0")
     back.click()
-    
     time.sleep(2)
-
     
-    # TODO: Click into the following part
+    # lick into the followers part
     followersElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'followers')
     followersElem.click()
     time.sleep(2)
     print("Starting scrap...")
     time.sleep(4)
-    #   TODO: Download the users in a lists and do scroll
+    # Download the users in a list
     followersList = get_users(browser)
     time.sleep(1)
 
