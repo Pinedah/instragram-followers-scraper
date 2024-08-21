@@ -83,7 +83,8 @@ try:
             
             # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw._aacx._aad7._aade")
             # followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "._ap3a._aaco._aacw")
-            followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "span")
+            #followingUsersElem = browser.find_elements(By.CSS_SELECTOR, "span")
+            followingUsersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
 
 
             for i in range(len(followingUsersElem)):
@@ -93,7 +94,7 @@ try:
                     logging.info(str(followingUsersElem[i].text))
 
             time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 500;", scrollable_div)
+            browser.execute_script("arguments[0].scrollTop += 800;", scrollable_div)
             time.sleep(2)
 
 
@@ -106,11 +107,19 @@ try:
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
-print(f"Following: {len(followingList)} users")
-#pprint.pprint(followingList)
-sortedList = sorted(followingList)
+finalList = followingList[1:]
+
+print(f"Following: {len(finalList)} users")
+pprint.pprint(finalList)
+
+#debuggedList = followingList[followingList.index('Search') + 1:]
+
+#print(f"\n\nUsers: {len(debuggedList)}\n")
+#pprint.pprint(debuggedList)
+
+# sortedList = sorted(followingList)
 # print(sortedList)
-pprint.pprint(sortedList)
+# pprint.pprint(sortedList)
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
