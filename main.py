@@ -17,9 +17,9 @@ def get_profile_info(profile):
     # logging.info(infoByLines)
     info = {}
     info['username'] = infoByLines[0]
-    info['posts'] = infoByLines[3].split(' ')[0].replace(',', '')
+    info['posts'] = infoByLines[3].split(' ')[0]
     info['followers'] = infoByLines[4].split(' ')[0]
-    info['following'] = infoByLines[5].split(' ')[0].replace(',', '')
+    info['following'] = infoByLines[5].split(' ')[0]
     info['name'] = infoByLines[6]
     # info['bio'] = infoByLines[7]
     return info
