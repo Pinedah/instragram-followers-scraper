@@ -95,7 +95,7 @@ finalList = followingList[1:]
 print(f"Following: {len(finalList)} users")
 pprint.pprint(finalList)
 
-print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 
+print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
 input("ENTER TO CLOSE...")
 browser.quit()
