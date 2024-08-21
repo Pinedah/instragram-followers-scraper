@@ -24,6 +24,33 @@ def get_profile_info(profile):
     # info['bio'] = infoByLines[7]
     return info
 
+def get_users(browser):
+
+    scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+    usersList = []
+    
+    Flag = True
+    while Flag:
+        # Look if we are in the final of the div
+        at_bottom = browser.execute_script(
+            "return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight;", 
+            scrollable_div)
+        if at_bottom:
+            logging.info("Ya estás en el final del scroll.")
+            Flag = False  
+        else:
+            usersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
+            for i in range(len(usersElem)):
+                if usersElem[i].text not in usersList:
+                    usersList.append(str(usersElem[i].text))
+                    logging.info(str(usersElem[i].text))
+
+            time.sleep(1)
+            browser.execute_script("arguments[0].scrollTop += 800;", scrollable_div)
+            time.sleep(2)
+    return usersList
+    
+
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
 
@@ -54,31 +81,7 @@ try:
 
     #   TODO: Download the users in a lists and do scroll
 
-    scrollable_div  = browser.find_element(By.CSS_SELECTOR, ".x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
-    followingList = []
     
-    Flag = True
-    while Flag:
-
-        # Look if we are in the final of the div
-        at_bottom = browser.execute_script(
-            "return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight;", 
-            scrollable_div)
-        if at_bottom:
-            print("Ya estás en el final del scroll.")
-            Flag = False  
-
-        else:
-
-            followingUsersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
-            for i in range(len(followingUsersElem)):
-                if followingUsersElem[i].text not in followingList:
-                    followingList.append(str(followingUsersElem[i].text))
-                    logging.info(str(followingUsersElem[i].text))
-
-            time.sleep(1)
-            browser.execute_script("arguments[0].scrollTop += 800;", scrollable_div)
-            time.sleep(2)
 
 
 
