@@ -80,19 +80,36 @@ try:
     time.sleep(4)
     #   TODO: Download the users in a lists and do scroll
     followingList = get_users(browser)
+    time.sleep(1)
+
+    # Get back into profile
+    htmlElem.send_keys(Keys.RETURN)
+    time.sleep(2)
+
     
     # TODO: Click into the following part
+    followingElem = browser.find_element(By.PARTIAL_LINK_TEXT, 'followers')
+    followingElem.click()
+    time.sleep(2)
+    print("Starting scrap...")
+    time.sleep(4)
     #   TODO: Download the users in a lists and do scroll
-
-    # TODO: Write the lists in a TXT / PDF
+    followersList = get_users(browser)
+    time.sleep(1)
 
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
-finalList = followingList[1:]
 
-print(f"Following: {len(finalList)} users")
-pprint.pprint(finalList)
+
+# TODO: Write the lists in a TXT / PDF
+followingList = followingList[1:]
+followersList = followersList[1:]
+
+
+
+# print(f"Following: {len(finalList)} users")
+# pprint.pprint(finalList)
 
 
 print("\n\nThanks for scrapping with us, come again soon!!<3<3 \n\n")
