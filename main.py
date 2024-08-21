@@ -78,13 +78,9 @@ try:
     time.sleep(2)
     print("Starting scrap...")
     time.sleep(4)
-
     #   TODO: Download the users in a lists and do scroll
-
+    followingList = get_users(browser)
     
-
-
-
     # TODO: Click into the following part
     #   TODO: Download the users in a lists and do scroll
 
