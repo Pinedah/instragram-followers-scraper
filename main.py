@@ -50,6 +50,10 @@ def get_users(browser):
             time.sleep(2)
     return usersList
     
+def write_list_in_txt(list, filename):
+    with open(filename, 'w') as file:
+        for user in list:
+            file.write(str(user) + '\n')
 
 # -------------------- BEGIN CODE -----------------------------------------------
 # TODO: Add Main and UI !!
@@ -107,6 +111,8 @@ followingList = followingList[1:]
 followersList = followersList[1:]
 
 
+write_list_in_txt(followingList, 'following.txt')
+write_list_in_txt(followersList, 'followers.txt')
 
 # print(f"Following: {len(finalList)} users")
 # pprint.pprint(finalList)
