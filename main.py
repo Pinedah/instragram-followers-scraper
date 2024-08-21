@@ -103,13 +103,11 @@ try:
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
-
-
-# TODO: Write the lists in a TXT / PDF
 followingList = followingList[1:]
 followersList = followersList[1:]
 
 
+# Write the lists in a TXT
 write_list_in_txt(sorted(followingList), 'following.txt')
 write_list_in_txt(sorted(followersList), 'followers.txt')
 
