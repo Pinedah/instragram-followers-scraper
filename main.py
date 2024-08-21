@@ -14,7 +14,6 @@ logging.disable(logging.DEBUG)
 def get_profile_info(profile):
     profileInfo = profile.find_element(By.CLASS_NAME, 'xdj266r') 
     infoByLines = str(profileInfo.text).split('\n')
-    # logging.info(infoByLines)
     info = {}
     info['username'] = infoByLines[0]
     info['posts'] = infoByLines[3].split(' ')[0]
@@ -35,7 +34,7 @@ def get_users(browser):
             "return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight;", 
             scrollable_div)
         if at_bottom:
-            logging.info("Ya estás en el final del scroll.")
+            logging.info("End page.")
             Flag = False  
         else:
             usersElem = browser.find_elements(By.CLASS_NAME, "x1rg5ohu")
@@ -103,9 +102,9 @@ try:
 except NoSuchElementException:
     logging.error("Was not able to find an element with that class name.")
 
+# Erase from lists the first element that is not a user
 followingList = followingList[1:]
 followersList = followersList[1:]
-
 
 # Write the lists in a TXT
 write_list_in_txt(sorted(followingList), 'following.txt')
